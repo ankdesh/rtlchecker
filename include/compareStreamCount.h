@@ -1,25 +1,24 @@
-template<class StreamType>
+/**
+ * @file   compareStreamCount.h
+ * @Author a.deshwal@samsung.com
+ * @brief  Template to Compare streams for couting differences
+ *
+ * This file implements template class for comparing two streams and count number of  differneces in the stream. This has been implemented separately using templates to provide a fast solution (no inheritance and deals with basic data types - so no indirection/poiter chasing, just plain counting)
+ */
+
+template<class StreamType, class CounterType>
 class CmpStreamsExactCount {
-  unsigned long long int result;
+  CounterType result;
   public:
+    CmpStreamsExactCount(CounterType initVal):result(initVal) {} 
     // Currently assuming that StreamType is only basic type. Overload relational operators for complex type. 
-    void cmpStream (const StreamType* strmA,const StreamType* strmB, const int numElements); 
-    int getResult() const; 
-};
-
-
-// This function just returns number of differences in the stream
-template<class StreamType>
-void CmpStreamsExactCount<StreamType>::cmpStream (const StreamType* strmA, const StreamType* strmB, const int numElem) {
+    void cmpStream (const StreamType* strmA,const StreamType* strmB, const int numElem){ 
    for (int i = 0 ; i < numElem; i++){
      if (strmA[i] != strmB[i]) 
        result++;
    }
 }
-
-// This function just returns number of differences in the stream
-template<class StreamType>
-inline int CmpStreamsExactCount<StreamType>::getResult () const {
-  return result;
-}
-
+    CounterType getResult() const{
+      return result;
+    }
+};

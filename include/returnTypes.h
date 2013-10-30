@@ -1,4 +1,0 @@
-class ReturnType{
-  public:
-    ReturnType();
-    

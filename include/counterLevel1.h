@@ -1,24 +1,18 @@
 /// 
-/// @file   counters.h
+/// @file   counterLevel1.h
 /// @Author a.deshwal@samsung.com
-/// @brief  Includes declararions of different types of counters 
-/// This file contains decalration of counters of different types 
-/// which are used in different level of stream Comparision
+/// @brief  Includes template for Simple counters (Level 1 counters ) 
+/// This file contains decalration of templates and its specializations 
+/// for level 1 counters. These counters just keep interger counts. 
 
+#ifndef COUNTERLEVEL1_H_ 
+#define COUNTERLEVEL1_H_ 
+
+#include<counterAbstract.h>
 #include<string>
 
 using namespace std;
 
-/// Abstract Counter class
-class CounterAbstract{
-  public:
-    void update();
-    virtual std::string resultAsString() const = 0;
-};
-
-
-/// Template for Simple counters (Level 1 counters ) which 
-/// just keep the integer counts 
 template <class CounterType>
 class CounterLevel1Template : public CounterAbstract{
   private:
@@ -34,3 +28,4 @@ class CounterLevel1Template : public CounterAbstract{
 
 typedef CounterLevel1Template<int> IntCounterLevel1;
 
+#endif
